@@ -8,9 +8,10 @@ import deserializeToken from './middleware/deserialized_token'
 
 // connect DB
 import './utils/connectToDB'
+import CONFIG from './config/environment'
 
 const app: Application = express()
-const port: number = 4000
+const port: number = CONFIG.port || 4000
 
 // parse body request
 app.use(bodyParser.urlencoded({ extended: false }))
