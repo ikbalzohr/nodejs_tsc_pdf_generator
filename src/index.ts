@@ -9,6 +9,7 @@ import deserializeToken from './middleware/deserialized_token'
 // connect DB
 import './utils/connectToDB'
 import CONFIG from './config/environment'
+import pdfGenerator from './utils/pdf'
 
 const app: Application = express()
 const port: number = CONFIG.port || 4000
@@ -29,6 +30,8 @@ app.use((req, res, next) => {
 app.use(deserializeToken)
 
 routes(app)
+
+pdfGenerator()
 
 app.listen(port, () => {
   logger.info(`Server is listening on port ${port}`)
